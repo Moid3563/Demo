@@ -1,0 +1,14 @@
+.Form{
+    text-align: center;
+    padding: 10px;
+}
+.user{
+    margin: 10px;
+}
+.comment{
+    margin: 10px;
+}
+
+.submit{
+    margin-top: 10px;
+}
