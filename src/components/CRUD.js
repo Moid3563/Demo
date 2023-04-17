@@ -16,6 +16,8 @@ function App() {
     ];
     const [lists, setList] = useState(list);
     const [updateState, setUpdateState] = useState(-1);
+    //  const [data, setData] = useState([])
+    
     console.log("list", lists);
     return (
       <div className="crud">
@@ -123,6 +125,32 @@ function App() {
   function AddList({ setList, lists }) {
     const nameRef = useRef();
     const priceRef = useRef();
+
+
+    function handleAscending(){
+    
+      const sorter1 = (a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
+
+      lists.sort(sorter1);
+      console.log(lists)
+      // setList(sorter1);
+
+      
+    }
+    const listComponents = lists.map((Object) => {
+      return <listItem name={Object.name}/>
+    })
+
+
+    function handleDescending(){
+
+      const sorter2 = (a, b) => a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1;
+      lists.sort(sorter2);
+      console.log(lists)
+    }
+    const listComponent = lists.map((Object) => {
+      return <listItem name={Object.name}/>
+    })
   
     function handSubmit(event) {
       console.log("idnew", lists.length + 1);
@@ -136,15 +164,20 @@ function App() {
       };
   
       console.log(newlist);
-  
-      setList((prevList) => {
-        return prevList.concat(newlist);
-      });
+  if(name != ''){    
+    setList((prevList) => {
+      return prevList.concat(newlist);
+    });
+  }
+
   
       nameRef.current.value = "";
       priceRef.current.value = "";
     }
-  
+
+
+
+   
     return (
       <form className="addForm" onSubmit={handSubmit}>
         <input
@@ -162,6 +195,14 @@ function App() {
           ref={priceRef}
         />
         <button type="submit">Add</button>
+        <button type="submit" onClick={handleAscending}>Ascending </button>
+        <ul>
+            {listComponents}
+        </ul>
+        <button type="submit" onClick={handleDescending}>Descending</button>
+        <ul>
+             {listComponent}
+        </ul>
       </form>
     );
   }

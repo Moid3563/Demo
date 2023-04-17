@@ -5,17 +5,32 @@ import './todo.css';
 function TodoList() {
     const [activity, setActivity] = useState("");
     const [listData, setlistData] = useState([]);
+    
+
 
     function addActivity(){
     //     setlistData([...listData, activity])
     //     console.log(listData)
+    if(activity != ""){
 
+    // alert("Enter the data")
+    
+    
     setlistData((listData)=>{
+    
         const updatedList =([...listData, activity])
         console.log(updatedList)
         setActivity('');
         return updatedList
-    })
+        
+    
+        
+      })
+        // const updatedList =([...listData, activity])
+        // console.log(updatedList)
+        // setActivity('');
+        // return updatedList
+    }
 }
 
 function removeActivity(i){
@@ -34,7 +49,7 @@ function removeAll(){
     <div className="container">
        <div className="header">TODO List</div>
        <input type="text" placeholder='Add Activity' value={activity} onChange={(e)=> setActivity(e.target.value)}/>
-       <button onClick={addActivity}>Add</button>
+       <button onClick={addActivity} >Add</button>
        <p className='list-heading'>Here is your List :{")"}</p>
        {listData!=[] && listData.map((data, i)=>{
         return(

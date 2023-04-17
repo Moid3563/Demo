@@ -17,6 +17,7 @@ import FetchNews from './components/FetchNews';
 import FakeApi from './components/FakeApi';
 import CRUD from './components/CRUD';
 import TodoList from './TodoList';
+import { Accordion } from './components/Accordion';
 
 
 
@@ -40,7 +41,8 @@ function App() {
       {/* <FetchNews/>  */}
      {/* <FakeApi/> */}
      {/* <CRUD/> */}
-     <TodoList/>
+     {/* <TodoList/> */}
+     <Accordion/>
     </>
   );
 }
